@@ -21,7 +21,7 @@
     @include('sweetalert::alert')
     <div class="row justify-content-center">
         <div class="col-8">
-            @include('components.navbar-component')
+            @include('components.navbar-auth-component')
         </div>
         <div class="col-8">
             @yield('content')
