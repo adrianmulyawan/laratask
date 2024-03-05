@@ -26,5 +26,6 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register-s
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('login-store')->middleware('guest');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/', HomeController::class)->name('home');

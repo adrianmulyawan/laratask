@@ -37,4 +37,12 @@ class LoginController extends Controller
             return back();
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        Alert::success('Hore', 'Logout Berhasil!');
+        return redirect()->route('login');
+    }
 }
