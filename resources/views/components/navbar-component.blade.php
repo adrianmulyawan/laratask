@@ -19,9 +19,27 @@
                         Blog
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/login" class="btn btn-primary">Login</a>
-                </li>
+                @guest
+                    <li class="nav-item">
+                        <a href="/login" class="btn btn-primary">Login</a>
+                    </li>
+                @endguest
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ Auth::user()->username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
