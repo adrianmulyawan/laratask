@@ -41,10 +41,13 @@
                                 {{ Str::limit($item->description, 30, '...') }}
                             </p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <span class="badge text-bg-primary">
+                                <span class="badge text-bg-{{ $item->status == 0 ? 'secondary' : 'success' }}">
                                     {{ $item->status === 0 ? 'Belum Selesai' : 'Selesai' }}
                                 </span>
-                                <a href="/" class="badge text-bg-primary text-decoration-none">Edit</a>
+                                <a href="{{ route('edit-task', $item->id) }}"
+                                    class="badge text-bg-primary text-decoration-none">Edit</a>
+                                <a href="{{ route('delete-task', $item->id) }}"
+                                    class="badge text-bg-danger text-decoration-none" data-confirm-delete="true">Delete</a>
                             </div>
                         </div>
                     </div>

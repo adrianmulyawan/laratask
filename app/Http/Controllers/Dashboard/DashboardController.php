@@ -14,25 +14,11 @@ class DashboardController extends Controller
     public function index()
     {
         $items = Task::orderBy('created_at', 'DESC')->paginate(6);
+
+        $title = 'Apakah Anda Yakin?';
+        $text = 'Data yang telah dihapus tidak dapat dikembalikan!';
+        confirmDelete($title, $text);
+
         return view('pages.dashboard.dashboard', compact('items'));
-    }
-
-    public function storeTask(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required|min:3'
-        ]);
-
-        $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
-        $data['uuid'] = Str::uuid();
-
-        // dd($data);
-
-        Task::create($data);
-
-        Alert::success('Hore!', 'Task Berhasil Dibuat!');
-        return back();
     }
 }
