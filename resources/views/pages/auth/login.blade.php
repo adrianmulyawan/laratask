@@ -30,6 +30,7 @@
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Login</button>
+                <a href="{{ route('register') }}" class="btn btn-success">Belum Punya Akun? Daftar Sekarang</a>
             </div>
         </form>
     </div>

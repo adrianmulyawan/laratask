@@ -1,5 +1,5 @@
 @extends('layouts.auth-layout')
-@section('title', 'Register');
+@section('title', 'Register')
 
 @section('content')
     <div class="container mt-5">
@@ -59,6 +59,7 @@
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+                <a href="{{ route('login') }}" class="btn btn-success">Sudah Punya Akun? Login Sekarang</a>
             </div>
         </form>
     </div>
