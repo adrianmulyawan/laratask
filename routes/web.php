@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -27,5 +28,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'store'])->name('login-store')->middleware('guest');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/store-task', [DashboardController::class, 'storeTask'])->name('store-task');
+});
 
 Route::get('/', HomeController::class)->name('home');
